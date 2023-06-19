@@ -30,6 +30,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import ec.com.orion.spring.model.JobExecution;
 import ec.com.orion.spring.model.JobResult;
 
 @SpringBootApplication
@@ -75,9 +76,9 @@ public class ConsumeRestApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			ResponseEntity<JobResult> quote = restTemplate.exchange(
-					"https://srvdatastage3.pronaca.corp:9443/ibm/iis/api/dscdesignerapi?api=getDSJobStatus&jobName=DWH_SA_EXT_FL_TH_DIMENSIONESCOMPANIA&projectName=DWH_PRODUCCION_AGR&hostName=srvdatastage3&getFullOutput=true&apiVersion=LATEST",
-					HttpMethod.GET, new HttpEntity<JobResult>(createHeaders("dwco.candrade", "Pronaca0202")), JobResult.class);
+			ResponseEntity<JobExecution> quote = restTemplate.exchange(
+					"https://srvdatastage3.pronaca.corp:9443/ibm/iis/api/dscdesignerapi?api=runDSJob&jobName=DWH_SA_EXT_FL_TH_DIMENSIONESCOMPANIA&projectName=DWH_PRODUCCION_AGR&hostName=srvdatastage3&getFullOutput=true&apiVersion=LATEST",
+					HttpMethod.GET, new HttpEntity<JobResult>(createHeaders("dwco.candrade", "Pronaca0202")), JobExecution.class);
 			log.info(quote.toString());
 		};
 	}
