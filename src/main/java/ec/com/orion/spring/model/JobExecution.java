@@ -20,6 +20,14 @@ public class JobExecution {
 		this.succeeded = succeeded;
 	}
 
+	
+	
+	public JobExecution() {
+		
+	}
+
+
+
 	public String getResult() {
 		return result;
 	}

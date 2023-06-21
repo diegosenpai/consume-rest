@@ -19,7 +19,6 @@ import ec.com.orion.spring.model.JobResult;
 @Service
 public class OnDemandJobOperator implements JobOperator {
 
-	@Autowired
 	private RestTemplate restTemplate;
 
 	public OnDemandJobOperator(RestTemplate restTemplate) {

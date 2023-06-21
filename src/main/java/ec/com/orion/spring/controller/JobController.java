@@ -14,8 +14,17 @@ import ec.com.orion.spring.service.JobOperator;
 @Controller
 public class JobController {
 
-	@Autowired
+	
 	public JobOperator jobOperator;
+
+	
+	
+	public JobController(JobOperator jobOperator) {
+		super();
+		this.jobOperator = jobOperator;
+	}
+
+
 
 	@GetMapping
 	public String proccessRequest(RedirectAttributes redirectAttributes) {
